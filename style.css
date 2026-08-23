@@ -1,0 +1,101 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  background: #e9edf3;
+}
+
+/* ===== Stage (image + overlays) ===== */
+.stage {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+}
+
+.stage img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* clickable overlays, positioned in % of the image */
+.hotspot {
+  position: absolute;
+  display: block;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+
+.hotspot:hover {
+  background: rgba(27, 58, 139, 0.22);
+  box-shadow: 0 0 0 2px rgba(27, 58, 139, 0.8) inset;
+}
+
+/* reveal mode: show where all buttons are */
+body.reveal .hotspot {
+  background: rgba(242, 107, 29, 0.22);
+  box-shadow: 0 0 0 2px rgba(242, 107, 29, 0.9) inset;
+}
+
+body.reveal .hotspot:hover {
+  background: rgba(27, 58, 139, 0.30);
+  box-shadow: 0 0 0 2px rgba(27, 58, 139, 0.9) inset;
+}
+
+/* ===== Reveal toggle button (demo helper) ===== */
+.reveal-toggle {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 200;
+  background: #1b3a8b;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 11px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  font-family: inherit;
+}
+
+.reveal-toggle:hover { background: #14295f; }
+body.reveal .reveal-toggle { background: #f26b1d; }
+
+/* ===== Recruit pages: sticky-nav layout (sliced images) ===== */
+.rpage {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+}
+
+.rseg { position: relative; line-height: 0; }
+.rseg > img { display: block; width: 100%; height: auto; }
+
+/* the sticky menu strip */
+.rnav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  line-height: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+}
+.rnav > img { display: block; width: 100%; height: auto; }
+
+/* invisible in-page scroll targets; offset so sections land below the sticky nav */
+.anchor {
+  position: absolute;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  visibility: hidden;
+  scroll-margin-top: var(--navh, 120px);
+}
+
+html { scroll-behavior: smooth; }
