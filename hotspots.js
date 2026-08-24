@@ -2,21 +2,20 @@
 // 各ホットスポットは画像に対する％で位置指定 → 拡大縮小に追従します。
 // t=top, l=left, w=width, h=height (すべて％), href=リンク先, title=ラベル
 
-// すべてのページ共通：画像内ヘッダーのナビ
-const HEADER_HOTSPOTS = [
-  { t: 0.15, l: 4.0,  w: 14.0, h: 1.7, href: "index.html",      title: "ロゴ（TOPへ）" },
-  { t: 0.15, l: 38.5, w: 5.0,  h: 1.7, href: "index.html",      title: "TOP" },
-  { t: 0.15, l: 44.5, w: 7.0,  h: 1.7, href: "business.html",   title: "事業案内" },
-  { t: 0.15, l: 52.5, w: 7.0,  h: 1.7, href: "company.html",    title: "企業情報" },
-  { t: 0.15, l: 60.5, w: 7.0,  h: 1.7, href: "recruit.html",    title: "採用情報" },
-  { t: 0.15, l: 69.0, w: 13.0, h: 1.7, href: "mailto:info@arkbuild.example", title: "お問い合わせ" },
-  { t: 0.15, l: 85.0, w: 14.0, h: 1.7, href: "requirements.html", title: "エントリー" },
+// 全ページ共通ヘッダー：右上は「採用サイトはこちら」→ 採用情報ページ
+const HEADER_NEW = [
+  { t: 0.15, l: 5.0,  w: 14.0, h: 1.7, href: "index.html",    title: "ロゴ（TOPへ）" },
+  { t: 0.15, l: 43.0, w: 7.0,  h: 1.7, href: "index.html",    title: "TOP" },
+  { t: 0.15, l: 50.5, w: 9.0,  h: 1.7, href: "business.html", title: "事業案内" },
+  { t: 0.15, l: 60.0, w: 9.0,  h: 1.7, href: "company.html",  title: "企業情報" },
+  { t: 0.15, l: 68.0, w: 13.5, h: 1.7, href: "mailto:info@arkbuild.example", title: "お問い合わせ" },
+  { t: 0.15, l: 83.5, w: 16.5, h: 1.7, href: "recruit.html",  title: "採用サイトはこちら" },
 ];
 
-function renderHotspots(bodyHotspots) {
+function renderHotspots(bodyHotspots, header) {
   const stage = document.querySelector(".stage");
   if (!stage) return;
-  const all = HEADER_HOTSPOTS.concat(bodyHotspots || []);
+  const all = (header || HEADER_NEW).concat(bodyHotspots || []);
   all.forEach((h) => {
     const a = document.createElement("a");
     a.className = "hotspot";
